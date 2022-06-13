@@ -166,8 +166,7 @@ namespace windowForm2.Global
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return user;
+                return null;
             }
             
         }
@@ -190,6 +189,27 @@ namespace windowForm2.Global
             return ds;
         }
 
+        public static bool DeleteAppliedBasedOnStudentID(int stuID)
+        {
+            string sqlString = "Delete studentApplied where studentID=" + stuID;
+            DBMain.MyExecuteNonQuery(sqlString, CommandType.Text);
+            return true;
+        }
+
+        public static bool DeleteAppliedBasedOnJobID(int jobID)
+        {
+            string sqlString = "Delete studentApplied where jobID=" + jobID;
+            DBMain.MyExecuteNonQuery(sqlString, CommandType.Text);
+            return true;
+        }
+
+        public static bool DeleteJobBaseOnEmID(int emID)
+        {
+            string sqlString = "Delete JOB where employerID=" + emID;
+            DBMain.MyExecuteNonQuery(sqlString, CommandType.Text);
+            return true;
+        }
+
         public static studentApplied GetStudentApplied(int studentAppliedID)
         {
             studentApplied stuApplied = new studentApplied();
@@ -209,7 +229,7 @@ namespace windowForm2.Global
         public static DataSet SearchStudentAppliedBaseOnKeyWord(string keyWord, int jobID)
         {
             DataSet ds = new DataSet();
-            string sqlStr = "SELECT * FROM studentApplied WHERE jobName LIKE '" + keyWord + "' AND jobID = " + jobID;
+            string sqlStr = "SELECT * FROM studentApplied WHERE jobName LIKE %'" + keyWord + "'% AND jobID = " + jobID;
             ds = DBMain.ExecuteQueryDataSet(sqlStr, CommandType.Text);
             return ds;
         }
@@ -217,7 +237,7 @@ namespace windowForm2.Global
         public static DataSet SearchJobBaseOnKeyWord(string keyWord, int emID)
         {
             DataSet ds = new DataSet();
-            string sqlStr = "SELECT * FROM JOB WHERE jobDescription LIKE '" + keyWord + "' OR jobName LIKE '" + keyWord + "' AND employerID = " + emID;
+            string sqlStr = "SELECT * FROM JOB WHERE jobDescription LIKE %'" + keyWord + "'% OR jobName LIKE %'" + keyWord + "'% AND employerID = " + emID;
             ds = DBMain.ExecuteQueryDataSet(sqlStr, CommandType.Text);
             return ds;
         }

@@ -85,7 +85,7 @@
             this.btnRefresh.IconColor = System.Drawing.Color.Black;
             this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRefresh.IconSize = 35;
-            this.btnRefresh.Location = new System.Drawing.Point(245, 9);
+            this.btnRefresh.Location = new System.Drawing.Point(254, 9);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(52, 45);

@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.userChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLoad = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userChart)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,12 +80,32 @@
             this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // userChart
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.userChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.userChart.Legends.Add(legend3);
+            this.userChart.Location = new System.Drawing.Point(28, 100);
+            this.userChart.Name = "userChart";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Number";
+            this.userChart.Series.Add(series3);
+            this.userChart.Size = new System.Drawing.Size(859, 536);
+            this.userChart.TabIndex = 1;
+            this.userChart.Text = "User Chart";
+            title3.Name = "Title1";
+            title3.Text = "User Number";
+            this.userChart.Titles.Add(title3);
+            // 
             // Administrator_Statistic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 772);
             this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.userChart);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

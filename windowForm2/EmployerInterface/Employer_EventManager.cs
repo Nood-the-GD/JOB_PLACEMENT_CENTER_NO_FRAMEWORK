@@ -76,17 +76,10 @@ namespace windowForm2.EmployerInterface
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            int jobID = Convert.ToInt32(dgvJobEvent.CurrentRow.Cells[0].Value.ToString());
             manager.Delete(); //Delete job based on jobID
             //When employer delete a job, that job also be deleted in studentApplied table.
-            DataSet ds = new DataSet();
-            ds = util.GetStudentAppliedList(util.jobID); //Get the list studentApplied based on jobID to delete
-            foreach(DataRow stuApplied in ds.Tables[0].Rows)
-            {
-                util.studentAppliedID = Convert.ToInt32(stuApplied["ID"].ToString());
-                manager = new AbstractManager(new BLStudentApplied());
-                manager.Delete();
-            }
-
+            util.DeleteAppliedBasedOnJobID(jobID);
             LoadData();
         }
 
@@ -116,6 +109,10 @@ namespace windowForm2.EmployerInterface
 
             result = util.SearchJobBaseOnKeyWord(txtSearch.Text, util.employerID);
             dgvJobEvent.DataSource = result;
+            if(txtSearch.Text == "")
+            {
+                dgvJobEvent.DataSource = oldData;
+            }
         }
     }
 }

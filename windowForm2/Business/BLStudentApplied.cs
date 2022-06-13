@@ -44,7 +44,7 @@ namespace windowForm2.Business
 
         public void Search(DataGridView dgv, string searchKeyWord)
         {
-            string sqlString = "SELECT * FROM " + TABLE_NAME + " WHERE jobName LIKE '" + searchKeyWord + "%'";
+            string sqlString = "SELECT * FROM " + TABLE_NAME + " WHERE jobName LIKE '%" + searchKeyWord + "%'";
             var result = DBMain.ExecuteQueryDataSet(sqlString, CommandType.Text);
             dgv.DataSource = result;
         }

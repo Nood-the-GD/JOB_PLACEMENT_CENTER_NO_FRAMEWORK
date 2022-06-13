@@ -47,8 +47,8 @@ namespace windowForm2.StudentInterfaces
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            AbstractManager manger = new AbstractManager(new BLStudentApplied());
-            manger.Delete();
+            AbstractManager manager = new AbstractManager(new BLStudentApplied());
+            manager.Delete();
             LoadData();
         }
     }

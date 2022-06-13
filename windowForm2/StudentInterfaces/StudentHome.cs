@@ -48,6 +48,10 @@ namespace windowForm2.StudentInterfaces
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             manager.Search(dgvJobList, txtSearch.Text);
+            if(txtSearch.Text == "")
+            {
+                dgvJobList.DataSource = manager.GetTable();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
